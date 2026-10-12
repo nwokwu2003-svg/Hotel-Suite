@@ -5,7 +5,7 @@ import Room from './models/Room.js';
 import User from './models/User.js';
 import HotelSettings from './models/HotelSettings.js';
 
-await mongoose.connect(process.env.MONGODB_URI);
+await mongoose.connect(process.env.MONGODB_URL);
 const passwordHash = await bcrypt.hash(process.env.ADMIN_PASSWORD, 12);
 await User.updateOne({
     email: process.env.ADMIN_EMAIL.toLowerCase()

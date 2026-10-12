@@ -95,6 +95,18 @@ let bookings = [{
         room: 'Classic King',
         stay: '22–24 Sep',
         status: 'Confirmed'
+    }, {
+        ref: 'HTL-20260921-2C18',
+        guest: 'Obiora Wike',
+        room: 'Classic King',
+        stay: '22–24 Sep',
+        status: 'Confirmed'
+    }, {
+        ref: 'HTL-20260921-2C18',
+        guest: 'Daniel chikaobi',
+        room: 'Classic King',
+        stay: '22–24 Sep',
+        status: 'Confirmed'
     }
 ];
 const $ = id => document.getElementById(id);
@@ -177,8 +189,9 @@ function renderBooking() {
     $('steps').innerHTML = [1, 2, 3, 4]
         .map(n => `<span class="step ${n===booking.step?'active':''}">${n}</span>`)
         .join('');
-    if (booking.step === 1) c.innerHTML = `<h2>When will you be staying?</h2>
-    <div class="form-grid"><label>Check-in<input id="in" type="date" value="
+    if (booking.step === 1)
+        c.innerHTML = `<h2>When will you be staying?</h2>
+    <div class="form-grid"><label> Check-in <input id="in" type="date" value="
     ${
         booking.checkIn||''}" required></label><label>Check-out<input id="out" type="date" value="
         ${
@@ -202,7 +215,7 @@ function renderBooking() {
                         <button class="text-button" onclick="booking.step=1;renderBooking()">← Back</button>
                         <button class="button" onclick="roomNext()">Guest details →</button></div>`
                     }
-                    else if(booking.step===3)
+                    else if(booking.step === 3)
                         c.innerHTML=`<h2>A few final details</h2>
                         <div class="form-grid"><label>Full name<input id="name" required></label>
                         <label>Phone number<input id="phone"></label><label>Email address
@@ -213,7 +226,7 @@ function renderBooking() {
                         <div class="form-actions"><button class="text-button" onclick="booking.step=2;renderBooking()">← Back</button>
                         <button class="button" onclick="detailsNext()">Review booking →</button></div>`;
                     else{
-                            let nights=Math.max(1, Math.round((
+                            let nights = Math.max(1, Math.round((
                                 new Date(booking.checkOut)-new Date(booking.checkIn))/86400000));
                                 c.innerHTML=`<h2>Review your request</h2>
                                 <div class="summary">
@@ -229,7 +242,7 @@ function renderBooking() {
                                 </div>`
                             }}
 function datesNext(){
-    let a=$('in').value,b=$('out').value;
+    let a=$('in').value, b=$('out').value;
     if(!a||!b||new Date(b) <= new Date(a)){
         notify('Please select valid dates.');
         return
@@ -238,7 +251,7 @@ function datesNext(){
         booking.checkOut=b;
         booking.adults=+$('adults').value; 
         booking.children=+$('children').value;
-        booking.step=2;
+        booking.step = 2;
         renderBooking()
     }
         function roomNext(){
@@ -341,8 +354,13 @@ async function loadRoomsFromApi() {
         if (!databaseRooms.length) return;
         const fallbackImages = rooms.map(room => room.image);
         rooms.splice(0, rooms.length, ...databaseRooms.map((room, index) => ({
-            id: room._id, name: room.name, type: room.type, price: room.pricePerNight,
-            capacity: room.capacity, bed: room.bedType, size: room.size,
+            id: room._id, 
+            name: room.name, 
+            type: room.type, 
+            price: room.pricePerNight,
+            capacity: room.capacity, 
+            bed: room.bedType, 
+            size: room.size,
             badge: room.featured ? 'Featured room' : 'Available tonight',
             image: room.images?.[0] || fallbackImages[index % fallbackImages.length]
         })));
@@ -365,9 +383,15 @@ async function submitBooking() {
         const response = await fetch(`${API_URL}/bookings`, {
             method: 'POST', headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                fullName: booking.name, phone: $('phone').value, email: $('email').value,
-                roomId: booking.room.id, checkIn: booking.checkIn, checkOut: booking.checkOut,
-                adults: booking.adults, children: booking.children, specialRequest: $('request').value,
+                fullName: booking.name, 
+                phone: $('phone').value, 
+                email: $('email').value,
+                roomId: booking.room.id, 
+                checkIn: booking.checkIn, 
+                checkOut: booking.checkOut,
+                adults: booking.adults,
+                 children: booking.children,
+                 specialRequest: $('request').value,
                 paymentMethod: { 
                     'Pay at hotel': 'pay_at_hotel', 'Bank transfer': 'bank_transfer', 'Card payment': 'card' 
                 }[$('pay').value] || 'pay_at_hotel'
@@ -381,7 +405,8 @@ async function submitBooking() {
     } catch (error) {
         notify(error.message || 'We could not submit your booking. Please try again.');
         if (submitButton) { 
-            submitButton.disabled = false; submitButton.textContent = 'Submit request';
+            submitButton.disabled = false; 
+            submitButton.textContent = 'Submit request';
          }
     }
 }

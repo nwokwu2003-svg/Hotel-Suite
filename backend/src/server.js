@@ -1,10 +1,10 @@
 import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
-import { connectDatabase } from '../config/database.js';
-import authRoutes from '../routes/auth.routes.js';
-import roomRoutes from '../routes/room.routes.js';
-import bookingRoutes from '../routes/booking.routes.js';
+import { connectDatabase } from './config/database.js';
+import authRoutes from './routes/auth.routes.js';
+import roomRoutes from './routes/room.routes.js';
+import bookingRoutes from './routes/booking.routes.js';
 const app = express();
 app.use(cors({
     origin: process.env.FRONTEND_ORIGIN ?
