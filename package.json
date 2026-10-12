@@ -1,0 +1,21 @@
+{
+    "name": "Hotel-Suite",
+    "version": "1.0.0",
+    "description": "",
+    "main": "api-config.js",
+    "scripts": {
+        "dev": "nodemon app.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "type": "module",
+    "devDependencies": {
+        "nodemon": "^3.1.14"
+    },
+    "dependencies": {
+        "express": "^5.2.1",
+        "mongodb": "^7.7.0"
+    }
+}

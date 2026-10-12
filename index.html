@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A refined, editable hotel booking experience." />
+    <title>Ikwo-Hotel-Suite House | Stay beautifully</title>
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" /> -->
+    <link rel="stylesheet" href="app.css" />
+    <link rel="stylesheet" href="mobile-nav.css" />
+</head>
+
+<body>
+    <!-- EDITABLE: change the hotel name, wording, and page sections here. -->
+    <section class="public page active" id="publicPage">
+        <nav class="nav">
+            <a class="logo" href="#home">HOTEL-SUITE<small>HOUSE HOTEL</small></a>
+            <div class="links">
+                <a href="#rooms">Rooms</a>
+                <a href="#amenities">Rates</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#contact">Contact</a>
+                <a href="./admin.html" class="text-button" onclick="openLogin()">Admin</a>
+                <button class="button" onclick="openBooking()">Book now</button>
+                <!-- <button class="text-button" onclick="openLogin()">Admin</button> -->
+            </div>
+            <button class="hamburger" aria-label="Open navigation menu" aria-controls="mobileNav" aria-expanded="false" onclick="toggleNav()">☰</button>
+        </nav>
+        <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+            <div class="mobile-nav-head">
+                <a class="logo" href="#home" onclick="closeNav()">IKWO<small>HOUSE HOTEL</small></a><button class="nav-close" aria-label="Close navigation menu" onclick="closeNav()">×</button></div>
+            <div class="mobile-nav-links"><a href="#home" onclick="closeNav()">Home <span>01</span></a><a href="#rooms" onclick="closeNav()">Rooms & Suites <span>02</span></a><a href="#amenities" onclick="closeNav()">Amenities <span>03</span></a><a href="#gallery" onclick="closeNav()">Gallery <span>04</span></a>
+                <a href="#contact" onclick="closeNav()">Contact <span>05</span></a>
+            </div>
+            <div class="mobile-nav-bottom"><button class="button" onclick="openBooking()">Book your stay</button><button class="text-button" onclick="openLogin()">Staff sign in →</button></div>
+        </div>
+        <main>
+            <section class="hero" id="home">
+                <div>
+                    <p class="eyebrow">Ikwo hotel concept</p>
+                    <h1>Your comfort.<br />Your stay. Your experience.</h1>
+                    <p class="hero-copy">
+                        A quietly luxurious base for the moments that matter. Every detail is ready for your hotel’s own story.
+                    </p>
+                    <div class="actions">
+                        <button class="button" onclick="openBooking()">
+                Book your stay</button
+              ><a class="button ghost" href="#rooms">Explore rooms</a>
+            </div>
+            </div>
+    </section>
+    <form class="availability" onsubmit="beginFromSearch(event)">
+        <label>Check in<input id="quickCheckIn" type="date" required /></label
+          ><label
+            >Check out<input id="quickCheckOut" type="date" required /></label
+          ><label
+            >Guests<select id="quickGuests">
+              <option value="1">1 guest</option>
+              <option value="2" selected>2 guests</option>
+              <option value="3">3 guests</option>
+              <option value="4">4 guests</option>
+            </select></label
+          ><button class="button">Check availability</button>
+                        </form>
+                        <section class="section intro">
+                            <div class="intro-image" role="img" aria-label="Elegant hotel lobby"></div>
+                            <div>
+                                <p class="eyebrow">Welcome to Our Hotel-Suite</p>
+                                <h2>A more thoughtful way to stay.</h2>
+                                <p class="quote">
+                                    “A place where unhurried mornings and remarkable evenings feel entirely natural.”
+                                </p>
+                                <p class="muted">
+                                    All property information and images in this demo are editable placeholders.
+                                </p>
+                            </div>
+                        </section>
+                        <section class="section" id="rooms">
+                            <div class="heading">
+                                <div>
+                                    <p class="eyebrow">Stay your way</p>
+                                    <h2>Rooms with a sense of place.</h2>
+                                </div>
+                                <p class="muted">
+                                    Choose from a collection of considered spaces designed for time well spent.
+                                </p>
+                            </div>
+                            <div class="room-grid" id="roomCards"></div>
+                        </section>
+                        <section class="amenities" id="amenities">
+                            <div><b>01</b><span>All-day dining</span></div>
+                            <div><b>02</b><span>Wellness & fitness</span></div>
+                            <div><b>03</b><span>Private transfers</span></div>
+                            <div><b>04</b><span>Local experiences</span></div>
+                        </section>
+                        <section class="section" id="gallery">
+                            <p class="eyebrow">A closer look</p>
+                            <h2>Every corner invites you in.</h2>
+                            <div class="gallery">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </section>
+        </main>
+        <footer id="contact">
+            <div>
+                <h3>Ikwo-Hotel House</h3>
+                <p>Premium hospitality, ready to be made yours.</p>
+            </div>
+            <div>
+                <h3>Contact</h3>
+                <p>Phone — +2348137519658<br />Email — solomonnwokwu46@gmail.com<br />WhatsApp — +2348137519684</p>
+            </div>
+            <div>
+                <h3>Staff</h3>
+                <!-- <button class="text-button" onclick="openLogin()">
+            Admin sign in
+          </button> -->
+                <a href="./admin.html" class="text-button" onclick="openLogin()">Admin Sign-In</a>
+            </div>
+        </footer>
+        <div class="mobile-book">
+            <button class="button" onclick="openBooking()">Book your stay</button>
+        </div>
+        </section>
+
+        <section class="booking page" id="bookingPage">
+            <header>
+                <button class="back" onclick="openPublic()">Back to hotel</button>
+                <p class="eyebrow">Ikwo Hotel House</p>
+                <h1>Plan your stay</h1>
+                <p class="muted">Complete your request in a few simple steps.</p>
+                <div class="steps" id="steps"></div>
+            </header>
+            <main class="booking-card" id="bookingContent"></main>
+        </section>
+
+
+        <!-- admin sections monitoring -->
+        <section class="admin page" id="adminPage">
+            <aside>
+                <a class="logo">IKWO<small>HOUSE HOTEL</small></a>
+                <button class="active" onclick="admin('dashboard', this)"> Overview</button>
+                <button onclick="admin('bookings', this)">Bookings</button>
+                <button onclick="admin('rooms', this)">Rooms</button>
+                <button onclick="admin('customers', this)">Customers</button>
+                <button onclick="admin('notifications', this)">Notifications</button>
+
+                <button onclick="admin('settings', this)">Settings</button>
+                <button onclick="openPublic()">Guest website</button>
+            </aside>
+            <main>
+                <div class="admin-head">
+                    <div>
+                        <p class="eyebrow">Operations</p>
+                        <h1 id="adminTitle">Good afternoon, VICTOR.</h1>
+                        <p class="muted" id="adminSub">
+                            Here’s an overview of your property today.
+                        </p>
+                    </div>
+                    <button class="button" onclick="openBooking()">+ New booking</button>
+                </div>
+                <div id="adminContent"></div>
+            </main>
+        </section>
+        <div class="toast" id="toast"></div>
+        <script src="api-config.js"></script>
+        <script src="app.js"></script>
+        <script src="./backend/src/server.js"></script>
+        <script src="./backend/src/seed.js"></script>
+        <script src="./backend/src/config/database.js"></script>
+</body>
+
+</html>
